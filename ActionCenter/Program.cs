@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ActionCenter
@@ -16,7 +11,11 @@ namespace ActionCenter
             {
                 icon.Text = Resources.ActionCenter;
                 icon.Icon = Resources.Icon;
-                icon.Click += (s, e) => Process.Start("ms-actioncenter://");
+                icon.MouseClick += (s, e) =>
+                {
+                    if(e.Button == MouseButtons.Left)
+                        Process.Start("ms-actioncenter://");
+                };
                 icon.ContextMenu = new ContextMenu(new []
                 {
                     new MenuItem(Resources.ShowActionCenter, (s, e) => Process.Start("ms-actioncenter://")),
