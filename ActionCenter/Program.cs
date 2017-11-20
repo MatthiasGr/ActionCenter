@@ -15,7 +15,8 @@ namespace ActionCenter
             using (var icon = new NotifyIcon())
             {
                 icon.Text = Resources.ActionCenter;
-
+                icon.Icon = Resources.Icon;
+                icon.Click += (s, e) => Process.Start("ms-actioncenter://");
                 icon.ContextMenu = new ContextMenu(new []
                 {
                     new MenuItem(Resources.ShowActionCenter, (s, e) => Process.Start("ms-actioncenter://")),
